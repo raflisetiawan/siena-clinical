@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+import bintaroWomen from '../assets/official-partners/bintaro-women.webp';
+import satriaBudi from '../assets/official-partners/satria-budi.webp';
+import summit from '../assets/official-partners/summit-insitute.webp';
+import smartData from '../assets/official-partners/smart-data-analysis-and-statistics.webp';
+import umn from '../assets/official-partners/umn.webp';
+import brawijaya from '../assets/official-partners/universitas-brawijaya.webp';
+import its from '../assets/official-partners/insitut-teknologi-sepuluh-nopember.webp';
+import genepica from '../assets/official-partners/genepica.webp';
+import pathGen from '../assets/official-partners/path-gen.webp';
+
+const partners = [
+  { src: bintaroWomen, alt: 'Bintaro Women & Children Clinic' },
+  { src: satriaBudi, alt: 'Yayasan Satria Budi Dharma Setia' },
+  { src: summit, alt: 'Summit Institute for Development' },
+  { src: smartData, alt: 'Smart Data Analysis and Statistics' },
+  { src: umn, alt: 'Universitas Multimedia Nusantara' },
+  { src: brawijaya, alt: 'Universitas Brawijaya' },
+  { src: its, alt: 'Institut Teknologi Sepuluh Nopember' },
+  { src: genepica, alt: 'Genepica' },
+  { src: pathGen, alt: 'PathGen Diagnostik Teknologi' },
+];
+---
+
+<section class="py-24 px-6 bg-white/80">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center max-w-4xl mx-auto mb-16">
+      <h2 class="font-heading text-3xl font-semibold text-siena-primary mb-6">
+        Official Partners
+      </h2>
+      <p class="text-gray-600 leading-relaxed text-base">
+        Collaboration is our breath. We actively partner with institutions across academia, industry, and communities, deliver direct community impact through the three core services.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8 items-center place-items-center">
+      {partners.map((partner) => (
+        <div class="w-full flex justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100">
+          <Image
+            src={partner.src}
+            alt={partner.alt}
+            class="max-h-24 md:max-h-28 w-auto object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

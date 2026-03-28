@@ -1,0 +1,101 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title font-heading">Siena Clinical</h1>
+    <p class="hero-tagline">Elevating research values into clinical practice</p>
+  </div>
+
+  <!-- Abstract wave supergraphic -->
+  <div class="hero-waves">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="wave wave-1">
+      <path d="M0,160 C360,260 720,60 1080,160 C1260,210 1380,180 1440,160 L1440,320 L0,320 Z" />
+    </svg>
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="wave wave-2">
+      <path d="M0,200 C320,100 640,280 960,180 C1200,110 1360,220 1440,200 L1440,320 L0,320 Z" />
+    </svg>
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="wave wave-3">
+      <path d="M0,240 C280,180 560,300 840,220 C1120,140 1320,260 1440,240 L1440,320 L0,320 Z" />
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3D4766 0%, #2a3250 40%, #1e2640 100%);
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .hero-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    pointer-events: none;
+  }
+
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wave-1 path {
+    fill: rgba(0, 163, 224, 0.06);
+  }
+
+  .wave-2 path {
+    fill: rgba(0, 163, 224, 0.04);
+  }
+
+  .wave-3 path {
+    fill: rgba(255, 255, 255, 0.03);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 360px;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+    }
+  }
+</style>

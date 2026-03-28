@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Prompt', sans-serif;
+
+  --color-siena-primary: #3D4766;
+  --color-siena-cyan: #00A3E0;
+  --color-siena-light: #F5F7FA;
+  --color-siena-white: #FFFFFF;
+}
