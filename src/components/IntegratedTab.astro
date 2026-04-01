@@ -40,80 +40,118 @@ const capabilities = [
 
 <div class="relative">
   <div
-    class="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-yellow-200/60 z-0 rounded-full"
+    class="hidden md:block absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-yellow-200/60 z-0 rounded-full"
+  >
+  </div>
+  <div
+    class="md:hidden absolute inset-y-0 left-4 w-px bg-yellow-200/60 z-0 rounded-full"
   >
   </div>
 
-  <div class="flex flex-col gap-32 relative z-10">
+  <div class="flex flex-col gap-14 md:gap-32 relative z-10">
     {
       capabilities.map((item, index) => {
         const isImageLeft = index % 2 === 0;
 
         return (
-          <div class="relative flex items-center w-full group">
-            <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-yellow-300 shadow-sm z-20 transition-transform duration-300 group-hover:scale-110 group-hover:border-yellow-400 group-hover:shadow-md">
+          <div class="relative w-full group">
+            <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-yellow-300 shadow-sm z-20 transition-transform duration-300 group-hover:scale-110 group-hover:border-yellow-400 group-hover:shadow-md">
               <span class="text-yellow-600 font-bold text-sm">{index + 1}</span>
             </div>
 
-            <div class="w-1/2 flex justify-end pr-14">
-              {isImageLeft ? (
-                <div class="w-64 h-64 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
+            {/* Mobile layout (single column) */}
+            <div class="md:hidden pl-12 pr-2 pt-1">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 shrink-0">
                   <Image
                     src={item.icon}
                     alt={item.alt}
-                    class="w-full h-full object-contain filter drop-shadow-lg"
+                    class="w-full h-full object-contain filter drop-shadow"
                   />
                 </div>
-              ) : (
-                <div class="text-right max-w-lg transition-all duration-300 group-hover:-translate-x-1 opacity-95 group-hover:opacity-100">
-                  <h3 class="text-2xl font-bold text-siena-primary mb-5">
+                <div class="min-w-0">
+                  <h3 class="text-xl font-bold text-siena-primary mb-2">
                     {item.title}
                   </h3>
                   <p class="text-gray-600 leading-relaxed text-[15px]">
                     {item.description}
                   </p>
-                  {item.list && (
-                    <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
-                      {item.list.map((listItem) => (
-                        <li class="flex justify-end gap-2 items-start">
-                          <span>{listItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
+              </div>
+              {item.list && (
+                <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
+                  {item.list.map((listItem) => (
+                    <li class="flex justify-start gap-2 items-start">
+                      <span class="text-siena-cyan/80 mt-1.5 w-1.5 h-1.5 rounded-full bg-siena-cyan shrink-0 block" />
+                      <span class="min-w-0">{listItem}</span>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
 
-            <div class="w-1/2 flex justify-start pl-14">
-              {!isImageLeft ? (
-                <div class="w-64 h-64 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
-                  <Image
-                    src={item.icon}
-                    alt={item.alt}
-                    class="w-full h-full object-contain filter drop-shadow-lg"
-                  />
-                </div>
-              ) : (
-                <div class="text-left max-w-lg transition-all duration-300 group-hover:translate-x-1 opacity-95 group-hover:opacity-100">
-                  <h3 class="text-2xl font-bold text-siena-primary mb-5">
-                    {item.title}
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed text-[15px]">
-                    {item.description}
-                  </p>
-                  {item.list && (
-                    <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
-                      {item.list.map((listItem) => (
-                        <li class="flex justify-start gap-2 items-start">
-                          <span class="text-siena-cyan/80 mt-1.5 w-1.5 h-1.5 rounded-full bg-siena-cyan shrink-0 block" />
-                          <span>{listItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              )}
+            {/* Desktop layout (two columns, alternating) */}
+            <div class="hidden md:flex items-center w-full">
+              <div class="w-1/2 flex justify-end pr-14">
+                {isImageLeft ? (
+                  <div class="w-64 h-64 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
+                    <Image
+                      src={item.icon}
+                      alt={item.alt}
+                      class="w-full h-full object-contain filter drop-shadow-lg"
+                    />
+                  </div>
+                ) : (
+                  <div class="text-right max-w-lg transition-all duration-300 group-hover:-translate-x-1 opacity-95 group-hover:opacity-100">
+                    <h3 class="text-2xl font-bold text-siena-primary mb-5">
+                      {item.title}
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-[15px]">
+                      {item.description}
+                    </p>
+                    {item.list && (
+                      <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
+                        {item.list.map((listItem) => (
+                          <li class="flex justify-end gap-2 items-start">
+                            <span>{listItem}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div class="w-1/2 flex justify-start pl-14">
+                {!isImageLeft ? (
+                  <div class="w-64 h-64 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
+                    <Image
+                      src={item.icon}
+                      alt={item.alt}
+                      class="w-full h-full object-contain filter drop-shadow-lg"
+                    />
+                  </div>
+                ) : (
+                  <div class="text-left max-w-lg transition-all duration-300 group-hover:translate-x-1 opacity-95 group-hover:opacity-100">
+                    <h3 class="text-2xl font-bold text-siena-primary mb-5">
+                      {item.title}
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-[15px]">
+                      {item.description}
+                    </p>
+                    {item.list && (
+                      <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
+                        {item.list.map((listItem) => (
+                          <li class="flex justify-start gap-2 items-start">
+                            <span class="text-siena-cyan/80 mt-1.5 w-1.5 h-1.5 rounded-full bg-siena-cyan shrink-0 block" />
+                            <span>{listItem}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         );

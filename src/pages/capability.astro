@@ -42,7 +42,7 @@ const tabs = [
       <!-- Tabs Layout -->
       <div class="border-b border-gray-200 mb-20 relative">
         <nav
-          class="-mb-px flex flex-wrap gap-8"
+          class="-mb-px flex flex-nowrap overflow-x-auto gap-2 sm:gap-8 pb-1 scrollbar-none"
           role="tablist"
           aria-label="Capability tabs"
           id="capability-tabs"
@@ -57,7 +57,7 @@ const tabs = [
                 aria-selected={tab.active ? "true" : "false"}
                 data-target={tab.target}
                 class:list={[
-                  "tab-button whitespace-nowrap py-4 px-2 border-b-2 font-semibold text-lg transition-all duration-300",
+                  "tab-button whitespace-nowrap py-3 sm:py-4 px-2 border-b-2 font-semibold text-sm sm:text-lg transition-all duration-300 shrink-0",
                   tab.active
                     ? "border-siena-cyan text-siena-primary active-tab"
                     : "border-transparent text-gray-400 hover:text-gray-800 hover:border-gray-300",
@@ -117,6 +117,17 @@ const tabs = [
     </div>
   </main>
 </Layout>
+
+<style>
+  /* Hide horizontal scrollbar for tabs (keeps scroll behavior). */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {

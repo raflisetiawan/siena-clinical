@@ -52,12 +52,43 @@ const navItems = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden flex flex-col gap-1.5 p-2"
+      class="md:hidden p-2"
       aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
-      <span class="block w-6 h-0.5 bg-white transition-transform duration-300" id="bar1"></span>
-      <span class="block w-6 h-0.5 bg-white transition-opacity duration-300" id="bar2"></span>
-      <span class="block w-6 h-0.5 bg-white transition-transform duration-300" id="bar3"></span>
+      <span class="sr-only">Toggle menu</span>
+      <!-- Hamburger -->
+      <svg
+        id="icon-hamburger"
+        class="w-7 h-7 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <!-- Close (X) -->
+      <svg
+        id="icon-close"
+        class="w-7 h-7 text-white hidden"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
     </button>
   </div>
 
@@ -92,22 +123,15 @@ const navItems = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const bar1 = document.getElementById('bar1');
-  const bar2 = document.getElementById('bar2');
-  const bar3 = document.getElementById('bar3');
+  const iconHamburger = document.getElementById('icon-hamburger');
+  const iconClose = document.getElementById('icon-close');
 
   btn?.addEventListener('click', () => {
     const isOpen = !menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden');
 
-    if (!isOpen) {
-      bar1?.style.setProperty('transform', 'rotate(45deg) translate(4px, 4px)');
-      bar2?.style.setProperty('opacity', '0');
-      bar3?.style.setProperty('transform', 'rotate(-45deg) translate(4px, -4px)');
-    } else {
-      bar1?.style.setProperty('transform', 'none');
-      bar2?.style.setProperty('opacity', '1');
-      bar3?.style.setProperty('transform', 'none');
-    }
+    btn?.setAttribute('aria-expanded', String(!isOpen));
+    iconHamburger?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
   });
 </script>
