@@ -24,13 +24,13 @@ const capabilities = [
     description:
       "Siena clinical is not only committed to improve the quality of the clinical research in Indonesia, but also to the development of fundamental knowledge and skills in research and health science. We provide training, workshops & short course that are delivered by the experts on each particular topic. Our educational activities cover (but not limited to)",
     list: [
-      "(1) Systematic literature studies;",
-      "(2) Meta-analysis;",
-      "(3) Research design and clinical epidemiology;",
-      "(4) Biostatistics (theory and practical);",
-      "(5) Basic statistics: exploratory data analysis, inference statistics, parametric and non-parametric methods for statistical test;",
-      "(6) Advance statistics: generalized linear regression & mixed-models;",
-      "(7) Using statistical tools (options: R and SPSS) for data analysis.",
+      "1. Systematic literature studies;",
+      "2. Meta-analysis;",
+      "3. Research design and clinical epidemiology;",
+      "4. Biostatistics (theory and practical);",
+      "5. Basic statistics: exploratory data analysis, inference statistics, parametric and non-parametric methods for statistical test;",
+      "6. Advance statistics: generalized linear regression & mixed-models;",
+      "7. Using statistical tools (options: R and SPSS) for data analysis.",
     ],
     icon: iconUpskill,
     alt: "Upskilling illustration",
@@ -142,8 +142,7 @@ const capabilities = [
                     {item.list && (
                       <ul class="text-gray-600 text-[14px] mt-4 space-y-2 list-none">
                         {item.list.map((listItem) => (
-                          <li class="flex justify-start gap-2 items-start">
-                            <span class="text-siena-cyan/80 mt-1.5 w-1.5 h-1.5 rounded-full bg-siena-cyan shrink-0 block" />
+                          <li class="flex justify-start items-start">
                             <span>{listItem}</span>
                           </li>
                         ))}

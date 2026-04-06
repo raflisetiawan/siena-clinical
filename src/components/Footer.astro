@@ -5,7 +5,7 @@ import logo from '../assets/logo/SIENA CLINICAL LOGO 2 (COLOR).png';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="w-full bg-white py-12 px-6 border-t border-gray-100 mt-auto">
+<footer class="w-full py-12 px-6 border-t border-gray-100 mt-auto">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
     
     <!-- Left Column: Logo & Socials -->
@@ -33,9 +33,9 @@ const currentYear = new Date().getFullYear();
 
     <!-- Right Column: Contact & Copyright -->
     <div class="flex flex-col md:items-end gap-2 text-left md:text-right">
-      <p class="font-heading font-semibold text-lg text-siena-primary mb-2">
+      <a href="/contact" class="font-heading font-semibold text-lg text-siena-primary mb-2 hover:text-siena-cyan transition-colors">
         Contact us
-      </p>
+      </a>
       <p class="text-sm text-gray-500">
         Copyright &copy;{currentYear} Siena Clinical. All rights reserved.
       </p>

@@ -12,11 +12,8 @@ const items = [
   {
     title: "MicroRNA‑mediated approaches in ovarian cancer therapy",
     meta: "Oncology Letters 28: 491, 2024.",
-    link: {
-      href: "https://doi.org/10.3892/ol.2024.14624",
-      label: "https://doi.org/10.3892/ol.2024.14624",
-    },
     icon: iconBook,
+    cardUrl: "https://doi.org/10.3892/ol.2024.14624",
   },
   {
     title:
@@ -24,12 +21,14 @@ const items = [
     meta:
       "National Public Health Journal. 2021; 16 (Special Issue 1): 11-16. DOI: 10.21109/kesmas.v0i0.5233",
     icon: iconBook,
+    cardUrl: "https://journal.fkm.ui.ac.id/kesmas/article/view/5233",
   },
   {
     title:
       "Factors Associated with Death in COVID-19 Patients in Jakarta, Indonesia: An Epidemiological Study",
     meta: "International Journal of Internal Medicine. 2020; Vol 52 No 3.",
     icon: iconBook,
+    cardUrl: "https://actamedindones.org/index.php/ijim/article/view/1525",
   },
   {
     title:
@@ -37,6 +36,7 @@ const items = [
     meta:
       "Oral Presentation at Seminar Nasional Biologi Tropika in Conjuction with Jogja MultiOmics Update. Yogjakarta-Indonesia. 2025",
     icon: iconScreen,
+    cardUrl: "https://drive.google.com/file/d/1hlidF8X8b53-Ejn7QRi9XtFywIT5SoTe/view?usp=sharing",
   },
   {
     title:
@@ -56,27 +56,32 @@ const items = [
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
     {
       items.map((item) => (
-        <article class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-siena-primary mb-5" set:html={item.icon} />
-          <h3 class="text-[17px] font-bold text-gray-900 mb-3 leading-snug">
-            {item.title}
-          </h3>
-          <p class="text-[14.5px] text-gray-600 leading-relaxed">
-            {item.meta}
-          </p>
-          {item.link && (
-            <p class="text-[14.5px] text-gray-600 leading-relaxed mt-1.5">
-              <a
-                href={item.link.href}
-                target="_blank"
-                rel="noreferrer"
-                class="text-siena-primary underline underline-offset-2 hover:text-siena-cyan transition-colors break-all"
-              >
-                {item.link.label}
-              </a>
+        item.cardUrl ? (
+          <a
+            href={item.cardUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="group block bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:border-siena-cyan/50 hover:-translate-y-1"
+          >
+            <div class="text-siena-primary mb-5 group-hover:text-siena-cyan transition-colors" set:html={item.icon} />
+            <h3 class="text-[17px] font-bold text-gray-900 mb-3 leading-snug group-hover:text-siena-cyan transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-[14.5px] text-gray-600 leading-relaxed">
+              {item.meta}
             </p>
-          )}
-        </article>
+          </a>
+        ) : (
+          <article class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-siena-primary mb-5" set:html={item.icon} />
+            <h3 class="text-[17px] font-bold text-gray-900 mb-3 leading-snug">
+              {item.title}
+            </h3>
+            <p class="text-[14.5px] text-gray-600 leading-relaxed">
+              {item.meta}
+            </p>
+          </article>
+        )
       ))
     }
   </div>
