@@ -1,4 +1,4 @@
-﻿# Siena Clinical
+# Siena Clinical
 
 Website profil Siena Clinical yang dibangun dengan Astro dan Tailwind CSS. Project ini memuat halaman publik untuk company profile, capability, publication, team, contact, serta detail course.
 
@@ -125,12 +125,12 @@ Implementasi ini ada di `src/pages/contact.astro`.
 
 ## Scripts
 
-| Command | Keterangan |
-| :-- | :-- |
-| `npm run dev` | Menjalankan local development server |
-| `npm run build` | Build static site ke folder `dist/` |
-| `npm run preview` | Menjalankan preview hasil build |
-| `npm run astro -- --help` | Bantuan Astro CLI |
+| Command                   | Keterangan                           |
+| :------------------------ | :----------------------------------- |
+| `npm run dev`             | Menjalankan local development server |
+| `npm run build`           | Build static site ke folder `dist/`  |
+| `npm run preview`         | Menjalankan preview hasil build      |
+| `npm run astro -- --help` | Bantuan Astro CLI                    |
 
 ## Deployment
 
