@@ -1,46 +1,149 @@
-# Astro Starter Kit: Basics
+﻿# Siena Clinical
+
+Website profil Siena Clinical yang dibangun dengan Astro dan Tailwind CSS. Project ini memuat halaman publik untuk company profile, capability, publication, team, contact, serta detail course.
+
+## Tech Stack
+
+- Astro 6
+- Tailwind CSS 4 via `@tailwindcss/vite`
+- TypeScript
+- Astro Content Collections
+
+## Requirements
+
+- Node.js `>=22.12.0`
+- npm
+
+## Menjalankan Project
+
+Install dependency:
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Jalankan development server:
 
-## 🚀 Project Structure
+```sh
+npm run dev
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+Preview hasil production build:
+
+```sh
+npm run preview
+```
+
+Build project:
+
+```sh
+npm run build
+```
+
+Catatan PowerShell di Windows:
+
+Jika `npm run ...` terblokir oleh execution policy, gunakan `npm.cmd` sebagai pengganti, misalnya:
+
+```sh
+npm.cmd run build
+```
+
+## Struktur Project
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+|-- public/
+|   |-- favicon.ico
+|   `-- favicon.svg
+|-- src/
+|   |-- assets/             # logo, ilustrasi, gambar partner, tim, publication
+|   |-- components/         # section dan UI Astro components
+|   |-- content/            # konten markdown: courses, publications, blogs, team, events
+|   |-- layouts/
+|   |   `-- Layout.astro    # metadata global, SEO tags, JSON-LD
+|   |-- pages/
+|   |   |-- index.astro
+|   |   |-- capability.astro
+|   |   |-- publication.astro
+|   |   |-- team.astro
+|   |   |-- contact.astro
+|   |   |-- robots.txt.ts
+|   |   |-- sitemap.xml.ts
+|   |   `-- courses/
+|   |       `-- [slug].astro
+|   `-- content.config.ts   # schema content collections
+|-- astro.config.mjs
+`-- package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Halaman Utama
 
-## 🧞 Commands
+- `/` : landing page Siena Clinical
+- `/capability` : layanan dan kapabilitas
+- `/publication` : journal, conference, blog, dan past events
+- `/team` : profil tim
+- `/contact` : form kontak berbasis `mailto:`
+- `/courses/[slug]` : detail course dinamis dari content collection
 
-All commands are run from the root of the project, from a terminal:
+## Content Management
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Sebagian besar konten dikelola dari folder `src/content/`:
 
-## 👀 Want to learn more?
+- `src/content/courses`
+- `src/content/publications`
+- `src/content/blogs`
+- `src/content/past-events`
+- `src/content/past-event-highlights`
+- `src/content/research-studies`
+- `src/content/team`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Schema untuk seluruh content collection didefinisikan di `src/content.config.ts`.
+
+## SEO
+
+Project ini sudah memiliki fondasi SEO berikut:
+
+- `site` URL di `astro.config.mjs`
+- canonical URL global
+- meta description
+- Open Graph dan Twitter Card
+- structured data JSON-LD pada halaman utama dan halaman penting
+- `robots.txt` di `/robots.txt`
+- `sitemap.xml` di `/sitemap.xml`
+
+## Contact Form
+
+Halaman contact tidak mengirim email otomatis dari server.
+
+Saat form disubmit, halaman akan membuka aplikasi email default user melalui `mailto:` dan menyiapkan draft email ke:
+
+```text
+admin@sienaclinical.com
+```
+
+Implementasi ini ada di `src/pages/contact.astro`.
+
+## Scripts
+
+| Command | Keterangan |
+| :-- | :-- |
+| `npm run dev` | Menjalankan local development server |
+| `npm run build` | Build static site ke folder `dist/` |
+| `npm run preview` | Menjalankan preview hasil build |
+| `npm run astro -- --help` | Bantuan Astro CLI |
+
+## Deployment
+
+Output project ini bersifat static dan dihasilkan ke folder:
+
+```text
+dist/
+```
+
+Pastikan domain production mengarah ke:
+
+```text
+https://www.sienaclinical.com
+```
+
+karena URL tersebut dipakai untuk canonical tag, sitemap, dan metadata SEO.
